@@ -1,4 +1,4 @@
-# Lightbase assesment
+# Lightbase assessment
 
 I'm to create a budgetting tool so teams can get insight into their budget. Budget are only valid for a certain period. 
 
