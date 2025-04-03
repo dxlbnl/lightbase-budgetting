@@ -1,0 +1,1 @@
+ALTER TABLE "purchases" ALTER COLUMN "amount" SET DATA TYPE numeric(5, 2);

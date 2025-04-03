@@ -50,8 +50,9 @@ export const purchases = pgTable('purchases', {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
     member: varchar().notNull(),
     budget: integer().notNull(),
-    amount: numeric({ precision: 2 }).notNull(),
-    date: date().notNull().defaultNow()
+    amount: numeric({ precision: 5, scale: 2 }).notNull(),
+    date: date().notNull().defaultNow(),
+    description: varchar(),
 }, (table) => [
     check('amount_positive', sql`${table.amount} > 0`)
 ])
