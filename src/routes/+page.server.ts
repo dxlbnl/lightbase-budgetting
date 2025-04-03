@@ -5,6 +5,11 @@ import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
 import { z } from 'zod';
 
+function isNumeric(str: string) {
+	if (typeof str !== 'string') return false; 
+	return !isNaN(str as any) && !isNaN(parseFloat(str));
+  }
+  
 const getUser = (name: string) =>
 	db.query.members.findFirst({ where: eq(sql`lower(${membersTable.name})`, name.toLowerCase()) });
 
@@ -53,9 +58,18 @@ const loginForm = z.object({
 });
 
 const purchaseForm = z.object({
-	amount: z.string().transform((amount) => parseFloat(amount)),
-	description: z.string()
+	amount: z.string().superRefine((val, ctx) => {
+		if (!isNumeric(val)) {
+			ctx.addIssue({
+				code: z.ZodIssueCode.custom,
+				message: "should be numeric",
+				fatal: true
+			})
+		}
+	}).transform(val => parseFloat(val)),
+	description: z.string().optional()
 });
+export type PurchaseForm = z.infer<typeof purchaseForm>
 
 export const actions = {
 	login: async ({ request, cookies }) => {
