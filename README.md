@@ -37,6 +37,14 @@ pnpm run build
 pnpm tsx src/db/seed.ts
 ```
 
+## Testing
+
+```bash
+pnpm vitest
+pnpm exec playwright test
+```
+
+
 You can preview the production build with `pnpm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
