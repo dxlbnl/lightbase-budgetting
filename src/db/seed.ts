@@ -1,10 +1,11 @@
 import { db } from ".";
-import { type MemberInsert, type TeamInsert, type BudgetInsert, teams, members, budgets} from "./schema";
+import { type MemberInsert, type TeamInsert, type BudgetInsert, teams, members, budgets, purchases} from "./schema";
 
 
 await db.delete(teams).execute()
 await db.delete(members).execute()
 await db.delete(budgets).execute()
+await db.delete(purchases).execute()
 
 
 const newTeam: TeamInsert = {

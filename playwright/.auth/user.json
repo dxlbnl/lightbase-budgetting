@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "user",
+      "value": "Arthur",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
